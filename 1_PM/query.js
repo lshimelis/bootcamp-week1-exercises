@@ -94,6 +94,7 @@ const database = {
     },
   ],
 }
+ const {users, friends, college} = database;
 
 /* using the js object and array methods, query the database defined above.
 Assume that the data in the database is dynamic and changes every day so
@@ -101,13 +102,18 @@ dont hard code solutions. */
 
 // Implement the function usersByPet to return a list of user objects filtered by cat or dog.
 const usersByPet = pet => {
+  const pet = database.users.filter(user => database.users.favPet === 'pet');
+  return pet.users; 
 }
 console.log(usersByPet('dog'))
 console.log(usersByPet('cat'))
 
 // Implement the function collegeLookup to return the name and color of a user's college.
 const collegeLookup = user => {
-}
+  const id = searchUserByName(user).id
+  const result = searchCollegeById(id)
+  return[result.name, result.color]
+  }
 console.log(collegeLookup('Charles'))
 console.log(collegeLookup('Daniela'))
 
@@ -116,7 +122,9 @@ const oppositesAttract = _______
 console.log(oppositesAttract)
 
 // define local as a list of users who live in the same state as they go to school.
-const local = _______
+const local = users.filter( suer => {
+  return user.state === searchCollegeById(user.collegeId)["state"]
+})
 console.log(local)
 
 // define collegeFriends as a list of friend objects that go to the same college
